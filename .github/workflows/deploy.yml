@@ -27,7 +27,8 @@ jobs:
         run: |
           mkdir -p public
           cp index.html public/
-
+          cp casebook.html public/
+          
       - name: Deploy with Wrangler
         uses: cloudflare/wrangler-action@v3
         with:
