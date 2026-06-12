@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="AI活用事例集を無料でダウンロード。業種別・規模別のAI導入事例を多数掲載。AI Rich Studioの支援実績をご覧ください。">
+<meta name="robots" content="noindex">
+<title>AI活用事例集 無料ダウンロード | AI Rich Studio</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<!-- HubSpot form embed script -->
+<script src="https://js-na2.hsforms.net/forms/embed/246440621.js" defer></script>
+
+<style>
+:root {
+  --blue:       #5B5BD6;
+  --blue-lt:    #7B7EE8;
+  --blue-pale:  #A5A8F0;
+  --navy-dark:  #0D1340;
+  --navy:       #111640;
+  --bg:         #F5F7FF;
+  --bg2:        #EEF1FF;
+  --surface:    #ffffff;
+  --text:       #0D1340;
+  --body:       #3a4070;
+  --muted:      #8b8fb0;
+  --border:     rgba(91,91,214,0.15);
+  --border2:    rgba(91,91,214,0.08);
+  --accent:     #5B5BD6;
+  --accent-lt:  rgba(91,91,214,0.1);
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Noto Sans JP', 'DM Sans', sans-serif;
+  font-weight: 400;
+  overflow-x: hidden;
+  line-height: 1.7;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── HEADER ── */
+.cb-header {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border2);
+  padding: 16px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.cb-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--navy-dark);
+}
+.cb-logo img { height: 28px; }
+.cb-logo-text {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.cb-back {
+  font-size: 13px;
+  color: var(--blue);
+  text-decoration: none;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: opacity 0.2s;
+}
+.cb-back:hover { opacity: 0.7; }
+.cb-back::before {
+  content: '←';
+  font-size: 14px;
+}
+
+/* ── MAIN ── */
+.cb-main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 28px;
+}
+
+.cb-card {
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  border-radius: 20px;
+  box-shadow: 0 8px 40px rgba(91,91,214,0.08);
+  max-width: 520px;
+  width: 100%;
+  padding: 48px 40px;
+}
+
+.cb-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--blue);
+  background: var(--accent-lt);
+  border: 1px solid var(--border);
+  padding: 4px 12px;
+  border-radius: 100px;
+  margin-bottom: 20px;
+  letter-spacing: 0.04em;
+}
+.cb-badge-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--blue);
+  flex-shrink: 0;
+}
+
+.cb-title {
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 1.4;
+  color: var(--navy-dark);
+  margin-bottom: 12px;
+  letter-spacing: -0.01em;
+}
+
+.cb-desc {
+  font-size: 14px;
+  color: var(--body);
+  line-height: 1.8;
+  margin-bottom: 32px;
+}
+
+/* ── HUBSPOT FORM AREA ── */
+.cb-form-area {
+  min-height: 300px;
+}
+
+/* HubSpot form style overrides */
+.cb-form-area .hs-form-field { margin-bottom: 16px; }
+.cb-form-area .hs-form-field label {
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  color: var(--navy-dark) !important;
+  margin-bottom: 6px !important;
+  display: block !important;
+}
+.cb-form-area .hs-input {
+  width: 100% !important;
+  height: 48px !important;
+  padding: 12px 16px !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 10px !important;
+  font-size: 14px !important;
+  font-family: 'Noto Sans JP', sans-serif !important;
+  background: var(--bg) !important;
+  color: var(--text) !important;
+  transition: border-color 0.2s !important;
+  box-sizing: border-box !important;
+}
+.cb-form-area .hs-input:focus {
+  outline: none !important;
+  border-color: var(--blue) !important;
+  box-shadow: 0 0 0 3px rgba(91,91,214,0.12) !important;
+}
+.cb-form-area .hs-submit {
+  margin-top: 24px;
+}
+.cb-form-area .hs-button {
+  width: 100% !important;
+  height: 52px !important;
+  background: var(--blue) !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: 12px !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  font-family: 'Noto Sans JP', sans-serif !important;
+  cursor: pointer !important;
+  transition: background 0.2s, transform 0.2s !important;
+  letter-spacing: 0.02em !important;
+}
+.cb-form-area .hs-button:hover {
+  background: var(--blue-lt) !important;
+  transform: translateY(-1px) !important;
+}
+.cb-form-area .hs-error-msgs {
+  font-size: 12px !important;
+  color: #e53e3e !important;
+  margin-top: 4px !important;
+}
+/* Hide HubSpot branding */
+.cb-form-area .hs-form .legal-consent-container { font-size: 12px !important; color: var(--muted) !important; }
+
+/* Fallback form (shown until HubSpot loads or as placeholder) */
+.cb-fallback-note {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--muted);
+  font-size: 13px;
+  border: 2px dashed var(--border);
+  border-radius: 12px;
+  background: var(--bg);
+}
+.cb-fallback-note code {
+  display: block;
+  margin-top: 8px;
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  color: var(--blue);
+}
+
+/* ── FOOTER ── */
+.cb-footer {
+  text-align: center;
+  padding: 24px 28px;
+  font-size: 12px;
+  color: var(--muted);
+  border-top: 1px solid var(--border2);
+}
+.cb-footer a {
+  color: var(--blue);
+  text-decoration: none;
+}
+.cb-footer a:hover {
+  text-decoration: underline;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 600px) {
+  .cb-card {
+    padding: 36px 24px;
+    border-radius: 16px;
+  }
+  .cb-title { font-size: 20px; }
+  .cb-main { padding: 32px 16px; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="cb-header">
+  <a href="https://lp.airich.jp/" class="cb-logo">
+    <img src="favicon.png" alt="AI Rich Studio">
+    <span class="cb-logo-text">AI Rich Studio</span>
+  </a>
+  <a href="https://lp.airich.jp/" class="cb-back">サービスサイトへ</a>
+</header>
+
+<!-- MAIN -->
+<main class="cb-main">
+  <div class="cb-card">
+    <div class="cb-badge">
+      <span class="cb-badge-dot"></span>
+      FREE DOWNLOAD
+    </div>
+
+    <h1 class="cb-title">AI活用事例集を<br>無料でお届けします</h1>
+
+    <p class="cb-desc">
+      業種別・規模別のAI導入事例を多数掲載。<br>
+      以下のフォームにご入力いただくと、<br>
+      メールにて事例集をお送りします。
+    </p>
+
+    <!-- HubSpot Form -->
+    <div class="cb-form-area" id="hubspotFormArea">
+      <div class="hs-form-frame" data-region="na2" data-form-id="a9b89c5a-0128-4daa-b87a-b1cbe6ea5419" data-portal-id="246440621"></div>
+    </div>
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="cb-footer">
+  <a href="https://lp.airich.jp/">AI Rich Studio サービスサイト</a>
+  &nbsp;|&nbsp;
+  <a href="https://airichstudio.github.io/privacy_policy/" target="_blank" rel="noopener">プライバシーポリシー</a>
+  <br>
+  <span style="margin-top:6px;display:inline-block;">© AI Rich Studio（SEVENRICH GROUP）</span>
+</footer>
+
+<script>
+// 送信完了後にサンクスメッセージを表示（HubSpotのイベントリスナー）
+window.addEventListener('message', function(event) {
+  if (event.data && event.data.type === 'hsFormCallback' && event.data.eventName === 'onFormSubmitted') {
+    document.querySelector('.cb-card').innerHTML = 
+      '<div style="text-align:center;padding:40px 0;">' +
+        '<div style="width:56px;height:56px;border-radius:50%;background:var(--accent-lt);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:24px;color:var(--blue);">✓</div>' +
+        '<h2 style="font-size:20px;font-weight:700;color:var(--navy-dark);margin-bottom:12px;">ありがとうございます</h2>' +
+        '<p style="font-size:14px;color:var(--body);line-height:1.8;margin-bottom:24px;">' +
+          'ご入力いただいたメールアドレス宛に、<br>AI活用事例集をお送りします。' +
+        '</p>' +
+        '<a href="https://lp.airich.jp/" style="display:inline-flex;align-items:center;gap:6px;color:var(--blue);font-size:14px;font-weight:500;text-decoration:none;">' +
+          '← AI Rich Studio サービスサイトを見る' +
+        '</a>' +
+      '</div>';
+  }
+});
+</script>
+
+</body>
+</html>
