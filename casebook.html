@@ -312,11 +312,50 @@ src="https://www.facebook.com/tr?id=1436797771804684&ev=PageView&noscript=1"
 </footer>
 
 <script>
-// 送信完了後にサンクスメッセージを表示（HubSpotのイベントリスナー）
-window.addEventListener('message', function(event) {
-  if (event.data && event.data.type === 'hsFormCallback' && event.data.eventName === 'onFormSubmitted') {
-    // Meta Pixel Lead event
+// HubSpotフォーム送信検知 + Meta Pixel Lead event
+// hs-form-frame方式ではmessageイベントが使えないため、
+// フォームエリアのDOM変化（サンクスメッセージへの切り替え）を監視する
+(function() {
+  var formArea = document.getElementById('hubspotFormArea');
+  if (!formArea) return;
+
+  // messageイベントで検知を試みる（HubSpot embed v2対応）
+  window.addEventListener('message', function(event) {
+    if (event.data && typeof event.data === 'string') {
+      try {
+        var data = JSON.parse(event.data);
+        if (data.type === 'hsFormCallback' && data.eventName === 'onFormSubmitted') {
+          fireLead();
+        }
+      } catch(e) {}
+    }
+    if (event.data && event.data.type === 'hsFormCallback' && event.data.eventName === 'onFormSubmitted') {
+      fireLead();
+    }
+  });
+
+  // DOMの変化も監視（サンクスメッセージ表示を検知）
+  var observer = new MutationObserver(function(mutations) {
+    for (var i = 0; i < mutations.length; i++) {
+      var m = mutations[i];
+      // HubSpotがフォームをサンクスに差し替えたかチェック
+      var thankYou = formArea.querySelector('.submitted-message, .hs-form-iframe[src*="submitted"]');
+      var formGone = !formArea.querySelector('form, .hs-form-frame');
+      if (thankYou || formGone) {
+        fireLead();
+        observer.disconnect();
+        break;
+      }
+    }
+  });
+  observer.observe(formArea, { childList: true, subtree: true, attributes: true });
+
+  var leadFired = false;
+  function fireLead() {
+    if (leadFired) return;
+    leadFired = true;
     if (typeof fbq === 'function') { fbq('track', 'Lead'); }
+    // サンクスメッセージ表示
     document.querySelector('.cb-card').innerHTML = 
       '<div style="text-align:center;padding:40px 0;">' +
         '<div style="width:56px;height:56px;border-radius:50%;background:var(--accent-lt);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:24px;color:var(--blue);">✓</div>' +
@@ -329,7 +368,7 @@ window.addEventListener('message', function(event) {
         '</a>' +
       '</div>';
   }
-});
+})();
 </script>
 
 </body>
