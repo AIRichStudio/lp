@@ -313,12 +313,17 @@ src="https://www.facebook.com/tr?id=1436797771804684&ev=PageView&noscript=1"
 
 <script>
 // HubSpotフォーム送信検知 + Meta Pixel Lead event
+// hs-form-frame方式はmessageを親に送信しないため、
+// iframeの高さ変化で送信完了を検知する
 (function() {
   var leadFired = false;
+  var formArea = document.getElementById('hubspotFormArea');
+  if (!formArea) return;
 
   function fireLead() {
     if (leadFired) return;
     leadFired = true;
+    console.log('Lead event fired!');
     if (typeof fbq === 'function') { fbq('track', 'Lead'); }
     document.querySelector('.cb-card').innerHTML = 
       '<div style="text-align:center;padding:40px 0;">' +
@@ -333,47 +338,28 @@ src="https://www.facebook.com/tr?id=1436797771804684&ev=PageView&noscript=1"
       '</div>';
   }
 
-  // 方法1: messageイベント（全パターン対応）
-  window.addEventListener('message', function(event) {
-    var data = event.data;
-    // 文字列の場合パース
-    if (typeof data === 'string') {
-      try { data = JSON.parse(data); } catch(e) { return; }
-    }
-    // HubSpot標準コールバック
-    if (data && data.type === 'hsFormCallback' && data.eventName === 'onFormSubmitted') {
-      fireLead();
-      return;
-    }
-    // HubSpot meetingBookSucceeded or formSubmit
-    if (data && data.meetingBookSucceeded) {
-      fireLead();
-      return;
-    }
-  });
+  // iframeの初期高さを記録し、大幅に縮んだら送信完了と判断
+  var initialHeight = 0;
+  var checkCount = 0;
 
-  // 方法2: iframe内のURL変化を監視
-  var formArea = document.getElementById('hubspotFormArea');
-  if (formArea) {
-    setInterval(function() {
-      if (leadFired) return;
-      var iframes = formArea.querySelectorAll('iframe');
-      for (var i = 0; i < iframes.length; i++) {
-        try {
-          var src = iframes[i].getAttribute('src') || '';
-          if (src.indexOf('submitted') !== -1) {
-            fireLead();
-            return;
-          }
-        } catch(e) {}
-      }
-      // サンクスメッセージのテキスト検知
-      var text = formArea.innerText || formArea.textContent || '';
-      if (text.indexOf('ありがとうございま') !== -1 || text.indexOf('Thank') !== -1 || text.indexOf('フォームの送信') !== -1) {
-        fireLead();
-      }
-    }, 1000);
-  }
+  setInterval(function() {
+    if (leadFired) return;
+    var iframe = formArea.querySelector('iframe');
+    if (!iframe) return;
+
+    var h = iframe.offsetHeight || iframe.clientHeight;
+    
+    // 初期高さを記録（フォームが読み込まれた後）
+    if (h > 200 && initialHeight === 0) {
+      initialHeight = h;
+      checkCount++;
+    }
+    
+    // 初期高さが記録され、高さが大幅に縮んだ場合 = サンクスメッセージに切り替わった
+    if (initialHeight > 0 && h > 0 && h < initialHeight * 0.6 && checkCount > 0) {
+      fireLead();
+    }
+  }, 500);
 })();
 </script>
 
