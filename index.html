@@ -121,20 +121,20 @@ nav {
 
 /* SVG logo mark inline */
 .logo-mark {
-  width: 36px;
-  height: 36px;
+  width: 30px;
+  height: 30px;
 }
 
 /* ロゴ画像（差し替え用） */
 .logo-img {
-  height: 40px;
+  height: 32px;
   width: auto;
   display: block;
 }
 
 .nav-logo-text {
   font-family: 'DM Sans', sans-serif;
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 700;
   color: var(--navy-dark);
   letter-spacing: -0.01em;
@@ -271,7 +271,7 @@ nav {
 }
 
 .hero-h1 {
-  font-size: clamp(32px, 5vw, 56px);
+  font-size: clamp(30px, 4.2vw, 48px);
   font-weight: 900;
   line-height: 1.2;
   color: var(--navy-dark);
@@ -280,7 +280,9 @@ nav {
   letter-spacing: -0.02em;
 }
 
-.hero-h1 .accent-line {
+.hero-h1 .hero-line {
+  display: block;
+  white-space: nowrap;
   background: linear-gradient(135deg, var(--blue) 0%, var(--blue-pale) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -1894,8 +1896,8 @@ footer {
   .cta-h2 { font-size: 24px; }
 }
 
-@media(max-width:480px) {
-  .hero-h1 { font-size: 28px; }
+@media(max-width: 480px) {
+  .hero-h1 { font-size: 24px; }
   .section-h2 { font-size: 22px; }
   .flow-grid { grid-template-columns: 1fr; }
   .track-stat-card { min-width: 100%; }
@@ -1903,8 +1905,12 @@ footer {
   .logo-box { min-width: 120px; height: 50px; font-size: 12px; padding: 8px 16px; }
   .logo-box img { max-height: 32px; max-width: 100px; }
   nav { height: 56px; }
-  .nav-logo-text { font-size: 15px; }
+  .nav-logo-text { font-size: 13px; }
   .nav-cta { padding: 7px 14px; font-size: 12px; }
+}
+
+@media(max-width: 340px) {
+  .hero-h1 { font-size: 20px; }
 }
 </style>
 <!-- Meta Pixel Code -->
@@ -1936,6 +1942,7 @@ src="https://www.facebook.com/tr?id=1436797771804684&ev=PageView&noscript=1"
     <a href="#strengths" class="nav-link">強み</a>
     <a href="#services" class="nav-link">サービス</a>
     <a href="#track-record" class="nav-link">実績</a>
+    <a href="casebook.html" class="nav-cta-casebook" target="_blank" rel="noopener">AI活用事例集ダウンロード</a>
     <a href="#request-form" class="nav-cta">資料請求・無料相談はこちら</a>
   </div>
 </nav>
@@ -1952,7 +1959,7 @@ src="https://www.facebook.com/tr?id=1436797771804684&ev=PageView&noscript=1"
   <div class="hero-inner">
     <div class="hero-left">
       <h1 class="hero-h1">
-        <span class="accent-line">AIで、<br>業務改善され"続ける"<br>組織の実現を<br>約束します。</span>
+        <span class="hero-line">AIで、業務改善され"続ける"</span><span class="hero-line">組織の実現を約束します。</span>
       </h1>
       <p class="hero-sub">挑戦し続ける企業に、AIネイティブ組織への変革を。</p>
       <p class="hero-body">
