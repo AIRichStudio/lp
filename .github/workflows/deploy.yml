@@ -29,7 +29,6 @@ jobs:
           cp index.html public/
           cp casebook.html public/
           cp sitemap.xml public/ 
-          cp privacy_policy.html public/
           
       - name: Deploy with Wrangler
         uses: cloudflare/wrangler-action@v3
