@@ -31,6 +31,7 @@ jobs:
           cp sitemap.xml public/
           cp AI_case.pdf public/
           cp consult.html public/
+          cp consult-thanks.html public/
           
       - name: Deploy with Wrangler
         uses: cloudflare/wrangler-action@v3
