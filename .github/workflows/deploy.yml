@@ -32,6 +32,7 @@ jobs:
           cp AI_case.pdf public/
           cp consult.html public/
           cp consult-thanks.html public/
+          cp ogp.png public/
           
       - name: Deploy with Wrangler
         uses: cloudflare/wrangler-action@v3
